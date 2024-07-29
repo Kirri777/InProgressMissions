@@ -504,7 +504,7 @@ end
 local function GarrisonLandingPageReport_SetElementInitializer()
 	local view = GarrisonLandingPageReportList.ScrollBox:GetView()
 	view:GetPadding():SetRight(GarrisonLandingPageReportList.ScrollBar:GetWidth())
-	view.templateInfos["GarrisonLandingPageReportMissionTemplate"] = nil
+	-- view.templateInfos["GarrisonLandingPageReportMissionTemplate"] = nil
 	view.elementExtent = nil
 	view:SetElementInitializer("GarrisonLandingPageReportMissionTemplateIPM", function(button, elementData)
 		if GarrisonLandingPageReport.selectedTab == GarrisonLandingPageReport.InProgress then
@@ -923,7 +923,8 @@ local function MissionButtonReward_OnLeave(frame)
 end
 
 function addon:MissionButton_OnLoad(button)
-	button.MissionTypeBG = button:CreateTexture(nil, "BACKGROUND", "Spellbook-TextBackground", 1)
+	-- button.MissionTypeBG = button:CreateTexture(nil, "BACKGROUND", "Spellbook-TextBackground", 1)
+	button.MissionTypeBG = button:CreateTexture(nil, "BACKGROUND")
 	button.MissionTypeBG:ClearAllPoints()
 	button.MissionTypeBG:SetPoint("TOPLEFT", button.MissionType, -5, 4)
 	button.MissionTypeBG:SetPoint("BOTTOMLEFT", button.MissionType, -5, -2)
@@ -1454,8 +1455,8 @@ function addon:HookCovenantMissionFrame()
 
 			local view = _G.CovenantMissionFrameMissions.ScrollBox:GetView()
 			view.elementExtent = COVENANTMISSION_BUTTONHEIGHT
-			view.templateInfos["CovenantMissionListButtonTemplate"].height = view.elementExtent
-			view.templateInfos["CovenantMissionListButtonTemplate"].extent = view.elementExtent
+			-- view.templateInfos["CovenantMissionListButtonTemplate"].height = view.elementExtent
+			-- view.templateInfos["CovenantMissionListButtonTemplate"].extent = view.elementExtent
 
 			_G.CovenantMissionFrameMissions.ScrollBox.wheelPanScalar = 1.5
 			_G.CovenantMissionFrameMissions.ScrollBar.wheelPanScalar = 1.5
