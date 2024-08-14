@@ -163,16 +163,16 @@ do
 	function addon:UpdateMissions()
 		local garrisonType = C_Garrison.GetLandingPageGarrisonType()
 		wipe(self.missions)
-		if garrisonType == Enum.GarrisonType.Type_9_0 then
+		if garrisonType == Enum.GarrisonType.Type_9_0_Garrison then
 			self:GetMissions(GFT.FollowerType_9_0_GarrisonFollower, self.missions, true)
 		end
-		if garrisonType == Enum.GarrisonType.Type_8_0 or IPMDB.enableBfaMissions or C_Garrison.IsPlayerInGarrison(Enum.GarrisonType.Type_8_0) then
+		if garrisonType == Enum.GarrisonType.Type_8_0_Garrison or IPMDB.enableBfaMissions or C_Garrison.IsPlayerInGarrison(Enum.GarrisonType.Type_8_0_Garrison) then
 			self:GetMissions(GFT.FollowerType_8_0_GarrisonFollower, self.missions, true)
 		end
-		if garrisonType == Enum.GarrisonType.Type_7_0 or IPMDB.enableLegionMissions or C_Garrison.IsPlayerInGarrison(Enum.GarrisonType.Type_7_0) then
+		if garrisonType == Enum.GarrisonType.Type_7_0_Garrison or IPMDB.enableLegionMissions or C_Garrison.IsPlayerInGarrison(Enum.GarrisonType.Type_7_0_Garrison) then
 			self:GetMissions(GFT.FollowerType_7_0_GarrisonFollower, self.missions, true)
 		end
-		if garrisonType == Enum.GarrisonType.Type_6_0 or IPMDB.enableGarrisonMissions or C_Garrison.IsPlayerInGarrison(Enum.GarrisonType.Type_6_0) then
+		if garrisonType == Enum.GarrisonType.Type_6_0_Garrison or IPMDB.enableGarrisonMissions or C_Garrison.IsPlayerInGarrison(Enum.GarrisonType.Type_6_0_Garrison) then
 			self:GetMissions(GFT.FollowerType_6_0_Boat, self.missions, true)
 			self:GetMissions(GFT.FollowerType_6_0_GarrisonFollower, self.missions, true)
 		end
@@ -528,7 +528,7 @@ local function GarrisonLandingPageReportList_Update(fullUpdate)
 	if not items then return end
 
 	if #items == 0 then
-		local emptyMissionText = GarrisonLandingPage.garrTypeID == Enum.GarrisonType.Type_9_0 and COVENANT_MISSIONS_EMPTY_IN_PROGRESS or GARRISON_EMPTY_IN_PROGRESS_LIST;
+		local emptyMissionText = GarrisonLandingPage.garrTypeID == Enum.GarrisonType.Type_9_0_Garrison and COVENANT_MISSIONS_EMPTY_IN_PROGRESS or GARRISON_EMPTY_IN_PROGRESS_LIST;
 		GarrisonLandingPageReportList.EmptyMissionText:SetText(emptyMissionText);
 	else
 		GarrisonLandingPageReportList.EmptyMissionText:SetText(nil);
@@ -570,7 +570,7 @@ local function GarrisonLandingPageReportList_UpdateItems()
 	end
 	GarrisonLandingPageReportList.items = items;
 
-	local availableString = garrTypeID == Enum.GarrisonType.Type_9_0 and COVENANT_MISSIONS_AVAILABLE or GARRISON_LANDING_AVAILABLE;
+	local availableString = garrTypeID == Enum.GarrisonType.Type_9_0_Garrison and COVENANT_MISSIONS_AVAILABLE or GARRISON_LANDING_AVAILABLE;
 	GarrisonLandingPageReport.Available.Text:SetFormattedText(availableString, #GarrisonLandingPageReportList.AvailableItems);
 
 	if ( GarrisonLandingPageReport.selectedTab == GarrisonLandingPageReport.InProgress ) then
@@ -1159,7 +1159,7 @@ function addon:RegisterMinimapIcon()
 		return true
 	end
 	local GarrisonID = C_Garrison.GetLandingPageGarrisonType()
-	if GarrisonID ~= Enum.GarrisonType.Type_9_0 then return end
+	if GarrisonID ~= Enum.GarrisonType.Type_9_0_Garrison then return end
 	if ExpansionLandingPage and (not ExpansionLandingPage:IsOverlayApplied()) then return end
 	local covenantID = C_Covenants.GetActiveCovenantID()
 	local covenantIcons = {[1] = 3257748, [2] = 3257751, [3] = 3257750, [4] = 3257749}
@@ -1174,7 +1174,7 @@ function addon:RegisterMinimapIcon()
 		OnClick = function(self, button)
 			local covenantID = C_Covenants.GetActiveCovenantID()
 			if covenantID and covenantID > 0 then
-				ShowGarrisonLandingPage(Enum.GarrisonType.Type_9_0)
+				ShowGarrisonLandingPage(Enum.GarrisonType.Type_9_0_Garrison)
 			end
 		end,
 		OnTooltipShow = function(tooltip)
@@ -1580,13 +1580,13 @@ end
 local function SlashCommandHandler(msg)
 	if not msg or msg:len() == 0 then
 		local GarrisonID = C_Garrison.GetLandingPageGarrisonType()
-		if GarrisonID >= Enum.GarrisonType.Type_6_0 then
+		if GarrisonID >= Enum.GarrisonType.Type_6_0_Garrison then
 			local covenantID = C_Covenants.GetActiveCovenantID()
 			if covenantID and covenantID > 0 then
-				ShowGarrisonLandingPage(_G.Enum.GarrisonType.Type_9_0)
+				ShowGarrisonLandingPage(_G.Enum.GarrisonType.Type_9_0_Garrison)
 			else
-				if GarrisonID >= _G.Enum.GarrisonType.Type_9_0 then
-					GarrisonID = _G.Enum.GarrisonType.Type_8_0
+				if GarrisonID >= _G.Enum.GarrisonType.Type_9_0_Garrison then
+					GarrisonID = _G.Enum.GarrisonType.Type_8_0_Garrison
 				end
 				ShowGarrisonLandingPage(GarrisonID)
 			end
