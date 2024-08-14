@@ -1,5 +1,5 @@
 ## Interface: 110000, 110002
-## Version: 10.0.38a
+## Version: 10.0.38b
 ## Author: Jaijai
 ## Title: In Progress Missions
 ## SavedVariables: IPMDB, IPMDBicon
