@@ -1529,7 +1529,7 @@ end
 
 function events:PLAYER_ENTERING_WORLD(event, ...)
 	for k, v in pairs(ORDERHALL_ADDONS) do
-		ORDERHALL_ADDONS[k] = IsAddOnLoaded(k)
+		ORDERHALL_ADDONS[k] = C_AddOns.IsAddOnLoaded(k)
 	end
 end
 
