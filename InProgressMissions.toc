@@ -28,7 +28,20 @@
 ## SavedVariables: IPMDB, IPMDBicon
 
 InProgressMissions.xml
-InProgressMissions.lua
+src\Core.lua
+src\Utils.lua
+src\Core\DB.lua
+src\Missions\Data.lua
+src\Missions\Alts.lua
+src\UI\Rewards.lua
+src\UI\Tooltip.lua
+src\UI\MissionButton.lua
+src\UI\ReportTab.lua
+src\UI\Covenant.lua
+src\UI\Minimap.lua
+src\Menu.lua
+src\Core\Safeguards.lua
+src\Core\Events.lua
 Libs\LibStub\LibStub.lua
 Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
 Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
