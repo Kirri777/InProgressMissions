@@ -1,5 +1,25 @@
 # Changelog
 
+## v10.1.0 (2026-06-13)
+
+### Added
+- Minimap button via LibDataBroker + LibDBIcon (LMB toggles garrison page, RMB opens settings)
+- Settings panel with minimap visibility checkbox (Blizzard Settings API)
+- Tooltip hints for LMB/RMB actions on minimap button
+
+### Changed
+- Refactored monolithic `InProgressMissions.lua` into modular `src/` structure with separate files for Core, Events, UI, Missions, Settings
+- Replaced deprecated `GetItemInfo` with `C_Item.GetItemInfo`
+
+### Fixed
+- Nil error when opening covenant landing page without a covenant
+- Nil error in mission list update when no missions available
+- Lua diagnostic warnings across all source files
+
+### Removed
+- `improveCovenantMissionUI` toggle (feature always active by default)
+- Unused legacy commented code blocks
+
 ## v10.0.39 (2026-06-13)
 
 ### Added

@@ -1,7 +1,7 @@
 ## Interface: 120005, 120007
 ## Title: |cFF1ABC9CIn Progress Missions|r
 ## Name: In Progress Missions
-## Version: 10.0.39
+## Version: 10.1.0
 ## Author: Jaijai / Mod: Kirri
 ## Notes: Adds an in-progress tab to the garrison report listing all active missions across alts.
 ## Notes-deDE: Fügt dem Garnisonsbericht einen Tab „In Bearbeitung" hinzu, der alle aktiven Missionen auf Alts anzeigt.
