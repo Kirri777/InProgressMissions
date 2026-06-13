@@ -13,9 +13,9 @@ function addon:InitDB()
 	if IPMDB.enableBfaMissions == nil then
 		IPMDB.enableBfaMissions = IPMDB.enableLegionMissions
 	end
-	-- if IPMDB.improveCovenantMissionUI == nil then
-	-- 	IPMDB.improveCovenantMissionUI = false
-	-- end
+	if IPMDB.showMinimap == nil then
+		IPMDB.showMinimap = true
+	end
 	if type(IPMDB.profiles) ~= "table" then
 		IPMDB.profiles = {}
 	end

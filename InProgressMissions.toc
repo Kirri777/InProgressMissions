@@ -41,6 +41,7 @@ src\UI\Covenant.lua
 src\UI\Minimap.lua
 src\Menu.lua
 src\Core\Safeguards.lua
+src\Core\Settings.lua
 src\Core\Events.lua
 Libs\LibStub\LibStub.lua
 Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua

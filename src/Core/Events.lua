@@ -9,6 +9,7 @@ function events:ADDON_LOADED(event, name, ...)
 		if _G.GarrisonLandingPageReportList then
 			self:Init()
 		end
+		self:RegisterSettings()
 	elseif name == "Blizzard_OrderHallUI" then
 		-- self:HookOrderHallMissionFrame()
 	elseif name and self.ORDERHALL_ADDONS[name] ~= nil then
@@ -36,13 +37,8 @@ function events:PLAYER_LOGIN(event, ...)
 			self:SaveInProgressMissions()
 		end
 	end)
-end
-
-function events:SPELLS_CHANGED(event, ...)
-	C_Timer.After(1, function()
-		if addon:RegisterMinimapIcon() then
-			addon:UnregisterEvent(event)
-		end
+	C_Timer.After(3, function()
+		addon:RegisterMinimapIcon()
 	end)
 end
 
@@ -54,35 +50,10 @@ end
 
 function addon:HandleSlashCommand(msg)
 	if not msg or msg:len() == 0 then
-		local GarrisonID = C_Garrison.GetLandingPageGarrisonType()
-		if GarrisonID >= Enum.GarrisonType.Type_6_0_Garrison then
-			local covenantID = C_Covenants.GetActiveCovenantID()
-			if covenantID and covenantID > 0 then
-				ShowGarrisonLandingPage(_G.Enum.GarrisonType.Type_9_0_Garrison)
-			else
-				if GarrisonID >= _G.Enum.GarrisonType.Type_9_0_Garrison then
-					GarrisonID = _G.Enum.GarrisonType.Type_8_0_Garrison
-				end
-				ShowGarrisonLandingPage(GarrisonID)
-			end
-		else -- no Garrison
-			for char, missions in pairs(IPMDB.profiles) do
-				print("=====", (missions[1] and missions[1].charText) or char, "=====")
-				for k, m in pairs(missions) do
-					if type(m) == "table" then
-						print(("[%03d] %s"):format(m.level, m.name), "-", date("%a,%H:%M", m.missionEndTime), (time() - m.missionEndTime) > 0 and "(".._G.COMPLETE..")" or "")
-					end
-				end
-			end
-		end
+		addon:OpenGarrisonPage()
 	else
 		msg = msg:lower()
-		if msg == "covenantui" then
-			IPMDB.improveCovenantMissionUI = not IPMDB.improveCovenantMissionUI
-			print(YELLOW_FONT_COLOR:WrapTextInColorCode("["..ADDON_NAME.."]"), RED_FONT_COLOR:WrapTextInColorCode(_G.REQUIRES_RELOAD))
-		else
-			print(YELLOW_FONT_COLOR:WrapTextInColorCode("["..ADDON_NAME.."]"), ORANGE_FONT_COLOR:WrapTextInColorCode("Unknown command:"), msg)
-		end
+		print(YELLOW_FONT_COLOR:WrapTextInColorCode("["..ADDON_NAME.."]"), ORANGE_FONT_COLOR:WrapTextInColorCode("Unknown command:"), msg)
 	end
 end
 

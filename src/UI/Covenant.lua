@@ -191,23 +191,21 @@ end
 
 function addon:HookCovenantMissionFrame()
 	if _G.CovenantMissionFrame then
-		if IPMDB.improveCovenantMissionUI or IPMDB.improveCovenantMissionUI == nil then
-			local function InitializedFrame(_, button, elementData)
-				if not button.ipm then
-					button.ipm = true
-					CovenantMissionFrameMissionButton_SetStyle(button, elementData)
-				end
-				addon:GarrisonMissionFrameMissionButton_SetExpiresText(button, elementData)
-				CovenantMissionFrameMissionButtonRewards_SetStyle(button, elementData)
+		local function InitializedFrame(_, button, elementData)
+			if not button.ipm then
+				button.ipm = true
+				CovenantMissionFrameMissionButton_SetStyle(button, elementData)
 			end
-			_G.CovenantMissionFrameMissions.ScrollBox:RegisterCallback("OnInitializedFrame", InitializedFrame, addon)
-
-			local view = _G.CovenantMissionFrameMissions.ScrollBox:GetView()
-			view.elementExtent = addon.COVENANTMISSION_BUTTONHEIGHT
-
-			_G.CovenantMissionFrameMissions.ScrollBox.wheelPanScalar = 1.5
-			_G.CovenantMissionFrameMissions.ScrollBar.wheelPanScalar = 1.5
+			addon:GarrisonMissionFrameMissionButton_SetExpiresText(button, elementData)
+			CovenantMissionFrameMissionButtonRewards_SetStyle(button, elementData)
 		end
+		_G.CovenantMissionFrameMissions.ScrollBox:RegisterCallback("OnInitializedFrame", InitializedFrame, addon)
+
+		local view = _G.CovenantMissionFrameMissions.ScrollBox:GetView()
+		view.elementExtent = addon.COVENANTMISSION_BUTTONHEIGHT
+
+		_G.CovenantMissionFrameMissions.ScrollBox.wheelPanScalar = 1.5
+		_G.CovenantMissionFrameMissions.ScrollBar.wheelPanScalar = 1.5
 		self:CovenantMissionAddRewardsIcons()
 		hooksecurefunc(_G.CovenantMissionFrame, "ShowMission", CovenantMissionFrame_ShowMission)
 	end
