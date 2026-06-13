@@ -555,8 +555,9 @@ local function GarrisonLandingPageReportList_UpdateItems()
 
 	local garrTypeID = GarrisonLandingPage.garrTypeID;
 	if not garrTypeID then return end
-	local availableMissions = C_Garrison.GetAvailableMissions(GetPrimaryGarrisonFollowerType(garrTypeID));
-	GarrisonLandingPageReportList.AvailableItems = GarrisonLandingPageReportMission_FilterOutCombatAllyMissions(availableMissions);
+	local followerType = GetPrimaryGarrisonFollowerType(garrTypeID);
+	local availableMissions = followerType and C_Garrison.GetAvailableMissions(followerType);
+	GarrisonLandingPageReportList.AvailableItems = availableMissions and GarrisonLandingPageReportMission_FilterOutCombatAllyMissions(availableMissions) or {};
 	Garrison_SortMissions(GarrisonLandingPageReportList.AvailableItems);
 
 	local items = GarrisonLandingPageReportList.items or {}

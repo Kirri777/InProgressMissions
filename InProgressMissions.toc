@@ -1,8 +1,32 @@
-## Interface: 110000, 110002
-## Version: 10.0.38b
-## Author: Jaijai
-## Title: In Progress Missions
+## Interface: 120005, 120007
+## Title: |cFF1ABC9CIn Progress Missions|r
+## Name: In Progress Missions
+## Version: 10.0.39
+## Author: Jaijai / Mod: Kirri
+## Notes: Adds an in-progress tab to the garrison report listing all active missions across alts.
+## Notes-deDE: Fügt dem Garnisonsbericht einen Tab „In Bearbeitung" hinzu, der alle aktiven Missionen auf Alts anzeigt.
+## Notes-esES: Añade una pestaña de "En progreso" al informe de guarnición que muestra todas las misiones activas en los alts.
+## Notes-esMX: Añade una pestaña de "En progreso" al informe de guarnición que muestra todas las misiones activas en los alts.
+## Notes-frFR: Ajoute un onglet "En cours" au rapport de garnison listant toutes les missions actives sur les personnages alternatifs.
+## Notes-itIT: Aggiunge una scheda "In corso" al rapporto della guarnizione che elenca tutte le missioni attive sui personaggi alternativi.
+## Notes-koKR: 주둔지 보고서에 "진행 중" 탭을 추가하여 부캐의 모든 활성 임무를 표시합니다.
+## Notes-ptBR: Adiciona uma aba "Em andamento" ao relatório de guarnição listando todas as missões ativas nos alts.
+## Notes-ruRU: Добавляет вкладку "В процессе" в отчет гарнизона со списком всех активных заданий на альтернативных персонажах.
+## Notes-zhCN: 在 garrison report 中添加一个“进行中”标签页，列出所有角色的进行中任务。
+## Notes-zhTW: 在駐軍報告中添加一個「進行中」標籤頁，列出所有角色的進行中任務。
+## Category: Garrison
+## Category-deDE: Garrison
+## Category-esES: Garrison
+## Category-esMX: Garrison
+## Category-frFR: Garrison
+## Category-itIT: Garrison
+## Category-koKR: Garrison
+## Category-ptBR: Garrison
+## Category-ruRU: Garrison
+## Category-zhCN: Garrison
+## Category-zhTW: Garrison
 ## SavedVariables: IPMDB, IPMDBicon
+
 InProgressMissions.xml
 InProgressMissions.lua
 Libs\LibStub\LibStub.lua

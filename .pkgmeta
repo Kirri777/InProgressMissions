@@ -1,0 +1,13 @@
+package-as: InProgressMissions
+
+ignore:
+  - .git*
+  - .pkgmeta
+  - CHANGELOG.md
+  - README.md
+
+changelog-latest-only: true
+
+manual-changelog:
+  filename: CHANGELOG.md
+  markup-type: markdown
