@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local addon = _G.InProgressMissions
 local GFT = addon.GFT
 
@@ -21,7 +22,9 @@ function addon:HookOrderHallMissionFrame()
 	if _G.OrderHallMissionFrameMissionsListScrollFrame and not self.OrderHallMissionsScrollFrame then
 		self.OrderHallMissionsScrollFrame = _G.OrderHallMissionFrameMissionsListScrollFrame
 		hooksecurefunc(_G.OrderHallMissionFrame.MissionTab.MissionList, "Update", function()
+			---@diagnostic disable: undefined-global
 			MissionsScrollFrame_SetExpiresText(self.OrderHallMissionsScrollFrame)
+			---@diagnostic enable: undefined-global
 		end)
 	end
 end
@@ -30,7 +33,9 @@ function addon:HookBFAMissionFrame()
 	if _G.BFAMissionFrameMissionsListScrollFrame and not self.BFAMissionsScrollFrame then
 		self.BFAMissionsScrollFrame = _G.BFAMissionFrameMissionsListScrollFrame
 		hooksecurefunc(_G.BFAMissionFrame.MissionTab.MissionList, "Update", function()
+			---@diagnostic disable: undefined-global
 			MissionsScrollFrame_SetExpiresText(self.BFAMissionsScrollFrame)
+			---@diagnostic enable: undefined-global
 		end)
 	end
 end
@@ -138,7 +143,7 @@ local function CovenantMissionFrame_ShowMission(frame, info)
 			button:SetAlpha(1)
 			button.iconBorder:Hide()
 			if reward.itemID then
-				local name, _, rarity, _, _, _, _, _, _, icon = GetItemInfo(reward.itemLink or reward.itemID)
+				local _, _, rarity, _, _, _, _, _, _, icon = C_Item.GetItemInfo(reward.itemLink or reward.itemID)
 				button.icon:SetTexture(icon)
 				local color = BAG_ITEM_QUALITY_COLORS[rarity] or BAG_ITEM_QUALITY_COLORS[1]
 				button.iconBorder:SetVertexColor(color.r, color.g, color.b)

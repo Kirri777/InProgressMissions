@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local addon = _G.InProgressMissions
 local GFT = addon.GFT
 
@@ -7,6 +8,7 @@ function addon:GetMissions(followerType, dest, sort)
 	if not temp then return end
 	for k, mission in pairs(temp) do
 		if type(mission) == "table" then
+			---@diagnostic disable: inject-field
 			mission.isAltMission = false
 			mission.description = ""
 			mission.charText = self.playerNameText.."-"..GetRealmName()
@@ -15,6 +17,7 @@ function addon:GetMissions(followerType, dest, sort)
 			if isAutoCombatant then
 				mission.encounterIconInfo = C_Garrison.GetMissionEncounterIconInfo(mission.missionID)
 			end
+			---@diagnostic enable: inject-field
 		end
 	end
 	if sort then
@@ -31,9 +34,13 @@ function addon:GetMissionFollowerAbilitiesInfo(mission)
 	for i, id in ipairs(mission.followers) do
 		local info = C_Garrison.GetFollowerInfo(id)
 		if info then
+			---@diagnostic disable: inject-field
 			info.abilities = {}
+			---@diagnostic enable: inject-field
 			if isAutoCombatant then
+				---@diagnostic disable: param-type-mismatch
 				local spells = C_Garrison.GetFollowerAutoCombatSpells(info.followerID, info.level or 1)
+				---@diagnostic enable: param-type-mismatch
 				for k, spell in ipairs(spells or {}) do
 					tinsert(info.abilities, 1, spell.icon)
 				end

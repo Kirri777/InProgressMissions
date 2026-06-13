@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local addon = _G.InProgressMissions
 local GFT = addon.GFT
 

@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local addon = _G.InProgressMissions
 
 local function Reward_Update(Reward, info)
@@ -14,19 +15,19 @@ local function Reward_Update(Reward, info)
 	if (info.itemID or info.itemLink) then
 		Reward.itemID = info.itemID
 		Reward.itemLink = info.itemLink
-		local itemTexture = select(10, GetItemInfo(info.itemID))
+			local itemTexture = select(10, C_Item.GetItemInfo(info.itemID))
 		Reward.Icon:SetTexture(itemTexture)
 		if (info.quantity > 1) then
 			Reward.Quantity:SetText(info.quantity)
 			Reward.Quantity:Show()
 		else
-			local quality, itemLevel = select(3, GetItemInfo(info.itemLink or info.itemID))
+			local quality, itemLevel = select(3, C_Item.GetItemInfo(info.itemLink or info.itemID))
 			if (itemLevel and itemLevel > 500) then
 				Reward.Quantity:SetText(ITEM_QUALITY_COLORS[quality].hex..itemLevel..FONT_COLOR_CODE_CLOSE)
 				Reward.Quantity:Show()
 			end
 		end
-		local quality = select(3, GetItemInfo(info.itemLink or info.itemID))
+		local quality = select(3, C_Item.GetItemInfo(info.itemLink or info.itemID))
 		local c = BAG_ITEM_QUALITY_COLORS[quality] or BAG_ITEM_QUALITY_COLORS[1]
 		Reward.IconBorder:SetVertexColor(c.r, c.g, c.b)
 		Reward.IconBorder:Show()

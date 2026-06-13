@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local addon = _G.InProgressMissions
 local ADDON_NAME = "InProgressMissions"
 local TITLE_COLOR = "|cFF1ABC9C"

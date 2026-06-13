@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local ADDON_NAME, addon = ...
 _G[ADDON_NAME] = addon
 

@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local addon = _G.InProgressMissions
 local GFT = addon.GFT
 
@@ -217,13 +218,15 @@ function addon:MissionButtonReward_OnEnter(frame)
 			if info.currencyID > 0 then
 				GameTooltip:SetCurrencyByID(info.currencyID)
 			else -- Money
-				GameTooltip:SetText(info.title)
-				GameTooltip:AddLine(GetMoneyString(info.quantity), 1, 1, 1)
-				GameTooltip:Show()
+                ---@type any
+                GameTooltip:SetText(info.title)
+                GameTooltip:AddLine(GetMoneyString(info.quantity), 1, 1, 1)
+                GameTooltip:Show()
 			end
 		else
 			if info.title then
-				GameTooltip:SetText(info.title)
+				---@type any
+			    GameTooltip:SetText(info.title)
 			end
 			if info.tooltip then
 				GameTooltip:AddLine(info.tooltip, 1, 1, 1, true)

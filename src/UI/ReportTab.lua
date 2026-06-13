@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local addon = _G.InProgressMissions
 
 function addon:GarrisonLandingPageReport_SetElementInitializer()

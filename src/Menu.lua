@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local addon = _G.InProgressMissions
 local ADDON_NAME = "InProgressMissions"
 
@@ -148,7 +149,9 @@ function addon:CreateMenu()
 			info.disabled = nil
 			info.isTitle = nil
 			info.notCheckable = nil
+			---@diagnostic disable: undefined-global
 			if UIDROPDOWNMENU_MENU_VALUE == "submenuSort" then
+			---@diagnostic enable: undefined-global
 				info.isNotRadio = nil
 
 				info.text = _G.CHARACTER_NAME_PROMPT
@@ -162,7 +165,9 @@ function addon:CreateMenu()
 				info.checked = IPMDB.sortMethod == "time" and true or nil
 				info.arg1 = "time"
 				UIDropDownMenu_AddButton(info, level)
+			---@diagnostic disable: undefined-global
 			elseif UIDROPDOWNMENU_MENU_VALUE == "submenuIgnore" then
+			---@diagnostic enable: undefined-global
 				info.isNotRadio = true
 
 				for name, profile in pairs(IPMDB.profiles) do

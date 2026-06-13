@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local addon = _G.InProgressMissions
 local GFT = addon.GFT
 
@@ -6,7 +7,7 @@ local function AddRewardText(item, rewardType)
 		if (reward.quality) then
 			GameTooltip:AddLine(addon:QualityColorText(reward.title or _G.UNKNOWN, reward.quality + 1))
 		elseif (reward.itemID) then
-			local itemName, _, itemQuality, _, _, _, _, _, _, itemTexture = GetItemInfo(reward.itemID)
+				local itemName, _, itemQuality, _, _, _, _, _, _, itemTexture = C_Item.GetItemInfo(reward.itemID)
 			if itemName then
 				itemName = addon:MakeIcon(itemTexture, addon:QualityColorText(itemName, itemQuality))
 				local quantity = reward.quantity and reward.quantity > 1 and FLAG_COUNT_TEMPLATE:format(reward.quantity) or ""
@@ -47,6 +48,7 @@ function addon:SetupMissionInfoTooltip(item, anchorFrame)
 	end
 
 	if (item.isBuilding) then
+		---@type any
 		GameTooltip:SetText(item.name)
 		GameTooltip:AddLine(string.format(GARRISON_BUILDING_LEVEL_LABEL_TOOLTIP, item.buildingLevel), 1, 1, 1)
 		if(item.isComplete) then
@@ -60,6 +62,7 @@ function addon:SetupMissionInfoTooltip(item, anchorFrame)
 
 	local isAutoCombatant = item.followerTypeID == GFT.FollowerType_9_0_GarrisonFollower -- Shadowlands
 
+	---@type any
 	GameTooltip:SetText(item.isComplete and ERR_QUEST_OBJECTIVE_COMPLETE_S:format(item.name) or item.name)
 
 	local color = item.isRare and ITEM_QUALITY_COLORS[3] or ITEM_QUALITY_COLORS[1]

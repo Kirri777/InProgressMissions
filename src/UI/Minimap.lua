@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 local addon = _G.InProgressMissions
 local ADDON_NAME = "InProgressMissions"
 local GARRISON_MISSION_ICON = 3257748
@@ -27,7 +28,7 @@ function addon:RegisterMinimapIcon()
 		end,
 	})
 	local icon = LibStub("LibDBIcon-1.0", true)
-    
+
 	if icon then
 		if IPMDBicon == nil then
 			IPMDBicon = {}
@@ -38,6 +39,11 @@ function addon:RegisterMinimapIcon()
 end
 
 function addon:OpenGarrisonPage()
+	if _G.GarrisonLandingPage and _G.GarrisonLandingPage:IsVisible() then
+		HideUIPanel(_G.GarrisonLandingPage)
+		return
+	end
+
 	local GarrisonID = C_Garrison.GetLandingPageGarrisonType()
 	if GarrisonID >= Enum.GarrisonType.Type_6_0_Garrison then
 		local covenantID = C_Covenants.GetActiveCovenantID()
